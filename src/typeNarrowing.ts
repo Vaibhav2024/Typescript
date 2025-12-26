@@ -43,6 +43,9 @@ function serve (chai: KulhadChai | Cutting) {
         return chai.serve()
     }
 } 
+// Test cases
+//console.log(serve(new KulhadChai()));   // Output: Serving kulhad chai
+//console.log(serve(new Cutting()));      // Output: Serving cutting chai
 
 // -----------------------------------Important Defining Custom Type Guard-----------------------
 type ChaiOrder = {
@@ -50,11 +53,26 @@ type ChaiOrder = {
     sugar: number
 }
 
-function isChaiOrder(obj:any) : obj is ChaiOrder {
+function isChaiOrder(obj:any) : obj is ChaiOrder {  
     return (
         typeof obj === 'object' && obj !== null && typeof obj.type === 'string' && typeof obj.sugar === 'number'
     )
 }
+
+// when the return becomes true the (is) keyword will convert that true to ChaiOrder so that in serveOrder function it will be able to know that the returned outpur is of type ChaiOrder
+// Simple Example for this
+// function isNumber(x: any): x is number {
+//     return typeof x === "number"
+// }
+
+// function printValue(value: number | string) {
+//     if (isNumber(value)) {
+//         value.toFixed(2) // OK
+//     } else {
+//         value.toUpperCase() // OK
+//     }
+// }
+
 
 function serveOrder(item: ChaiOrder | string) {
     if (isChaiOrder(item)) {
@@ -62,6 +80,12 @@ function serveOrder(item: ChaiOrder | string) {
     }
     return `Serving custom chai: ${item}`
 }
+
+// Test cases
+//console.log(serveOrder({ type: "masala", sugar: 2 }));   // Output: Serving masala chai with 2 sugar
+//console.log(serveOrder("Black tea"));                     // Output: Serving custom chai: Black tea
+//console.log(serveOrder({ type: "ginger", sugar: 1 }));    // Output: Serving ginger chai with 1 sugar
+//console.log(serveOrder({ type: "green", sugar: "no" }));  // Output: Serving custom chai: [object Object]
 
 // ---------------------------------------------------------------------------------------
 
@@ -83,6 +107,10 @@ function MakeChai(order: Chai) {
             return "Elaichi Chai"
     }
 }
+// Test cases
+//console.log(MakeChai({ type: "masala", spicelevel: 5 }));  // Output: Masala Chai
+//console.log(MakeChai({ type: "ginger", amount: 2 }));      // Output: Ginger Chai
+//console.log(MakeChai({ type: "elaichi", aroma: 3 }));      // Output: Elaichi Chai
 
 // ------------------------------------------------------------------------------------------
 function brew(order: MasalaChai | GingerChai) {
