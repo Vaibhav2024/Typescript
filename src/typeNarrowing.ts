@@ -13,7 +13,7 @@ function serveChai(msg?: string) {
     }
     return `Serving default masala chai`
 }
-// Type narrowing simply means write code in such a way that we check the type first and perform the operation on it first so thay we dont can perform different operation on different code
+// Type narrowing simply means write code in such a way that we check the type first and perform the operation on it first so that we dont need to perform different operation on different code
 
 function orderChai(size: "small" | "medium" | 'large' | number) {
     if (size === 'small') {
@@ -59,7 +59,7 @@ function isChaiOrder(obj:any) : obj is ChaiOrder {
     )
 }
 
-// when the return becomes true the (is) keyword will convert that true to ChaiOrder so that in serveOrder function it will be able to know that the returned outpur is of type ChaiOrder
+// when the return becomes true the (is) keyword will convert that true to ChaiOrder so that in serveOrder function it will be able to know that the returned output is of type ChaiOrder
 // Simple Example for this
 // function isNumber(x: any): x is number {
 //     return typeof x === "number"

@@ -1,0 +1,70 @@
+////  Difference between extends and implements
+In JavaScript, extends and implements are used in the context of object-oriented programming (OOP), especially with classes. They help define how classes and objects are structured and interact. Let's break down each one:
+
+extends:
+
+The extends keyword is used in class inheritance. It allows one class to inherit properties and methods from another class.
+
+When a class extends another class, it means the subclass will have access to the properties and methods of the superclass (parent class).
+
+This is how you create a child class that inherits behavior from a parent class.
+
+Example of extends:
+class Animal {
+  makeSound() {
+    console.log("Some generic animal sound");
+  }
+}
+
+class Dog extends Animal {
+  makeSound() {
+    console.log("Bark");
+  }
+}
+
+const dog = new Dog();
+dog.makeSound(); // Output: "Bark"
+
+
+In this example:
+
+Dog extends Animal, so Dog inherits the makeSound method from Animal.
+
+The Dog class can also override the inherited method, like in this case where it changes the makeSound to "Bark".
+
+implements:
+
+The implements keyword is not a part of JavaScript. It is used in TypeScript (a superset of JavaScript).
+
+In TypeScript, implements is used to ensure that a class follows a certain structure defined by an interface.
+
+An interface is like a blueprint that defines a set of methods (and sometimes properties) that a class must implement.
+
+The class that implements the interface is required to define all methods and properties declared in the interface.
+
+Example of implements in TypeScript:
+interface Animal {
+  makeSound(): void;
+}
+
+class Dog implements Animal {
+  makeSound() {
+    console.log("Bark");
+  }
+}
+
+const dog = new Dog();
+dog.makeSound(); // Output: "Bark"
+
+
+In this TypeScript example:
+
+Animal is an interface, which specifies that any class that implements it must have a makeSound method.
+
+Dog implements the Animal interface, so it must provide its own version of the makeSound method.
+
+Summary:
+
+extends (JavaScript): Used for class inheritance. A class can extend another class, inheriting its properties and methods.
+
+implements (TypeScript, not JavaScript): Used to ensure that a class follows a structure defined by an interface. A class that implements an interface must define all the methods and properties that the interface declares.
